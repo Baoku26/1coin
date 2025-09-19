@@ -8,7 +8,6 @@ import {
   Zap,
   Rocket,
 } from "lucide-react";
-import { Analytics } from "@vercel/analytics/next";
 import "./App.css";
 
 const OneCoinLanding = () => {
@@ -99,7 +98,7 @@ const OneCoinLanding = () => {
         <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-500 rounded-full opacity-10 animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-20 w-16 h-16 bg-orange-500 rounded-full opacity-20 animate-bounce"></div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-6 sm:px-2">
           <div className="w-full h-10"></div>
           {/* Logo/Icon */}
           <div className="mb-3 flex justify-center">
@@ -110,7 +109,7 @@ const OneCoinLanding = () => {
           </div>
 
           <h1
-            className="text-5xl md:text-6xl font-black text-black leading-tight"
+            className="text-5xl md:text-7xl font-black text-black leading-tight"
             style={{ fontFamily: "Caveat, cursive", fontWeight: "bold" }}
           >
             <span className="text-[#ff9304]">1 Coin</span> Can Change Your Life
@@ -123,7 +122,7 @@ const OneCoinLanding = () => {
             1 vision, 1 mission, 1 chance, 1 opportunity, 1 dream.
           </p>
 
-          <div className="flex flex-row sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-row px:3 sm:flex-row gap-4 justify-center items-center">
             {/*<button className="bg-[#ff9304] hover:bg-[#0a2fa2] text-white px-2 py-4 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 min-w-[200px] justify-center"*/}
             {/*        style={{ fontFamily: "Sora, sans-serif"}}>*/}
             {/*    */}
@@ -134,7 +133,7 @@ const OneCoinLanding = () => {
               href="https://bonk.fun/token/GMvCfcZg8YvkkQmwDaAzCtHDrrEtgE74nQpQ7xNabonk"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#ff9304] hover:bg-[#0a2fa2] text-white px-2 py-4 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 min-w-[200px] justify-center"
+              className="bg-[#ff9304] hover:bg-[#0a2fa2] text-white px-2 py-4 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 min-w-[150px] justify-center"
               style={{ fontFamily: "Sora, sans-serif" }}
             >
               <Zap size={20} />
@@ -144,7 +143,7 @@ const OneCoinLanding = () => {
               href="https://x.com/i/communities/1968442277552074769"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0a2fa2] hover:bg-[#ff9304] text-white px-2 py-4 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 min-w-[200px] justify-center"
+              className="bg-[#0a2fa2] hover:bg-[#ff9304] text-white px-2 py-4 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 min-w-[150px] justify-center"
               style={{ fontFamily: "Sora, sans-serif" }}
             >
               <img src={"./x.svg"} className="w-[20px] h-[20px]" />
