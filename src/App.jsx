@@ -223,7 +223,7 @@ const OneCoinLanding = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    2000+
+                    4000+
                   </div>
                   <div
                     className="text-gray-600 font-medium"
