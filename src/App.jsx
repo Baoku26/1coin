@@ -357,7 +357,7 @@ const OneCoinLanding = () => {
             : "opacity-0 translate-y-10"
         }`}
         style={{
-          backgroundImage: "url(banner.jpeg)",
+          backgroundImage: "url(banner.jpg)",
           backgroundSize: "contain",
           backgroundPosition: "center",
           backgroundRepeat: "repeat",
