@@ -13,6 +13,8 @@ import "./App.css";
 const OneCoinLanding = () => {
   const [copied, setCopied] = useState(false);
   const [isVisible, setIsVisible] = useState({});
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [logoRotation, setLogoRotation] = useState({ rotateX: 0, rotateY: 0 });
 
   const contractAddress = "GMvCfcZg8YvkkQmwDaAzCtHDrrEtgE74nQpQ7xNabonk";
 
@@ -38,6 +40,31 @@ const OneCoinLanding = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Mouse tracking effect for logo
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!isVisible.hero) return;
+
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+
+      // Calculate rotation based on mouse position
+      // Center of screen = 0 rotation, edges = max rotation
+      const rotateY = ((clientX - innerWidth / 2) / innerWidth) * 30; // Max 30deg
+      const rotateX = ((innerHeight / 2 - clientY) / innerHeight) * 30; // Max 30deg
+
+      setLogoRotation({ rotateX, rotateY });
+    };
+
+    if (isVisible.hero) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isVisible.hero]);
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(contractAddress);
@@ -59,16 +86,13 @@ const OneCoinLanding = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <img src="./1coinlogo.png" alt="logo" className="w-10 h-10" />
+              <img
+                src="./1coingoldenicon.png"
+                alt="logo"
+                className="w-10 h-10"
+              />
             </div>
 
-            {/* CTA Button */}
-            {/*<button className="bg-[#ff9304] hover:bg-[#0a2fa2] text-white px-6 py-2 rounded-lg font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"*/}
-            {/*        style={{ fontFamily: "Sora, sans-serif"}}*/}
-            {/*    >*/}
-            {/*    <Zap size={16} />*/}
-            {/*    Buy Now*/}
-            {/*</button>*/}
             <a
               href="https://bonk.fun/token/GMvCfcZg8YvkkQmwDaAzCtHDrrEtgE74nQpQ7xNabonk"
               target="_blank"
@@ -100,12 +124,21 @@ const OneCoinLanding = () => {
 
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 sm:px-2">
           <div className="w-full h-10"></div>
-          {/* Logo/Icon */}
-          <div className="mb-3 flex justify-center">
-            {/*<div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">*/}
-            {/*    <span className="text-white text-4xl font-black">1</span>*/}
-            {/*</div>*/}
-            <img src="./1coinlogo.png" alt="logo" className="w-[50%] h-[50%]" />
+          {/* Logo/Icon with Mouse-Following 3D Effect */}
+          <div
+            className="mb-3 flex justify-center"
+            style={{ perspective: "1000px" }}
+          >
+            <img
+              src="./1coingoldenicon.png"
+              alt="logo"
+              className="w-[50%] h-[50%] transition-transform duration-200 ease-out"
+              style={{
+                transform: `perspective(1000px) rotateX(${logoRotation.rotateX}deg) rotateY(${logoRotation.rotateY}deg) scale3d(1.05, 1.05, 1.05)`,
+                transformStyle: "preserve-3d",
+                willChange: "transform",
+              }}
+            />
           </div>
 
           <h1
@@ -208,7 +241,7 @@ const OneCoinLanding = () => {
             className="text-5xl md:text-7xl font-black text-center text-black mb-12"
             style={{ fontFamily: "Caveat, cursive", fontWeight: "bold" }}
           >
-            The 1 Coin Community
+            Join 1 Community
           </h2>
 
           <div className="flex flex-col gap-1 items-center">
